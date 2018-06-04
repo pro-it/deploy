@@ -11,6 +11,10 @@ SITE_URL="https://github.com/pro-it/site/archive/$SITE_BRANCH.tar.gz"
 DEPLOY_BRANCH='master'
 DEPLOY_URL="https://github.com/pro-it/deploy/archive/$DEPLOY_BRANCH.tar.gz"
 
+FEE_DIR="$PROIT_DIR/fee"
+FEE_BRANCH='master'
+FEE_URL="https://github.com/pro-it/fee/archive/$FEE_BRANCH.tar.gz"
+
 #NGINX_APT_FILE='/etc/apt/sources.list.d/nginx.list'
 NGINX_ETC_DIR='/etc/nginx'
 NGINX_DIR="$PROIT_DIR/nginx"
@@ -36,6 +40,7 @@ structure_define()
 structure_remove()
 {
     rm -rf "$PROIT_TMP_DIR"
+    rm -rf "$FEE_DIR"
     rm -rf "$SITE_DIR"
     rm -rf "$NGINX_DIR"
     rm -rf "$LETSENCRYPT_DIR"
@@ -104,6 +109,27 @@ deploy_define()
     letsencrypt_define
 }
 
+fee_download()
+{
+    echo "Fee source downloading..."
+
+    cd "$PROIT_TMP_DIR" && curl -SL "$FEE_URL" | tar -xz
+    if [ $? -ne 0 ]; then
+        echo "Some errors with fee source downloading for '$FEE_URL'"
+        structure_remove
+
+        exit 1
+    fi
+}
+
+fee_define()
+{
+    mv "$PROIT_TMP_DIR/fee-$FEE_BRANCH" "$FEE_DIR/"
+
+    sudo apt-get install -y libxml2-dev libxslt1-dev python3-pip
+    pip3 install $(cat $FEE_DIR/requires.txt)
+}
+
 site_download()
 {
     echo "Site source downloading..."
@@ -132,6 +158,9 @@ deploy()
 {
     structure_remove
     structure_define
+
+    fee_download
+    fee_define
 
     deploy_download
     deploy_define
