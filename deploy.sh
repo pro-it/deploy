@@ -30,6 +30,7 @@ SSL_DHPARAM_FILE="$SSL_DIR/dhparam.pem"
 SSL_DHPARAM_BIT_SIZE=4096
 
 
+#
 structure_define()
 {
     echo "Structure building..."
@@ -41,6 +42,7 @@ structure_define()
     mkdir -p "$LETSENCRYPT_DIR"
 }
 
+#
 structure_remove()
 {
     rm -rf "$PROIT_TMP_DIR" && \
@@ -51,6 +53,7 @@ structure_remove()
     rm -rf "$LETSENCRYPT_DIR"
 }
 
+#
 deploy_download()
 {
     echo "Deploy source downloading..."
@@ -83,6 +86,7 @@ ssl_define()
     openssl_dhparam_define
 }
 
+#
 nginx_define()
 {
 #    sudo rm -f "$NGINX_APT_FILE" && \
@@ -98,6 +102,7 @@ nginx_define()
     done
 }
 
+#
 letsencrypt_define()
 {
     echo "Let's Encrypt source downloading..."
@@ -113,6 +118,7 @@ letsencrypt_define()
     mv "$LETSENCRYPT_DIR/certbot-$LETSENCRYPT_BRANCH" "$LETSENCRYPT_DIR/certbot"
 }
 
+#
 deploy_define()
 {
     local deploy_dir="$PROIT_TMP_DIR/deploy-$DEPLOY_BRANCH/"
@@ -126,6 +132,7 @@ deploy_define()
     letsencrypt_define
 }
 
+#
 fee_download()
 {
     echo "Fee source downloading..."
@@ -139,6 +146,7 @@ fee_download()
     fi
 }
 
+#
 fee_define()
 {
     mv "$PROIT_TMP_DIR/fee-$FEE_BRANCH" "$FEE_DIR/"
@@ -147,6 +155,7 @@ fee_define()
     pip3 install $(cat $FEE_DIR/requires.txt)
 }
 
+#
 site_download()
 {
     echo "Site source downloading..."
@@ -160,6 +169,7 @@ site_download()
     fi
 }
 
+#
 site_define()
 {
     local site_dir="$PROIT_TMP_DIR/site-$SITE_BRANCH/"
@@ -171,6 +181,7 @@ site_define()
     rm -rf "$site_dir/"
 }
 
+#
 deploy()
 {
     structure_remove && \
@@ -189,4 +200,5 @@ deploy()
 }
 
 
+# Run
 deploy
