@@ -34,20 +34,20 @@ structure_define()
 {
     echo "Structure building..."
 
-    mkdir -p "$PROIT_TMP_DIR"
-    mkdir -p "$SITE_DIR"
-    mkdir -p "$SSL_DIR"
-    mkdir -p "$NGINX_DIR"
+    mkdir -p "$PROIT_TMP_DIR" && \
+    mkdir -p "$SITE_DIR" && \
+    mkdir -p "$SSL_DIR" && \
+    mkdir -p "$NGINX_DIR" && \
     mkdir -p "$LETSENCRYPT_DIR"
 }
 
 structure_remove()
 {
-    rm -rf "$PROIT_TMP_DIR"
-    rm -rf "$FEE_DIR"
-    rm -rf "$SITE_DIR"
-    rm -rf "$SSL_DIR"
-    rm -rf "$NGINX_DIR"
+    rm -rf "$PROIT_TMP_DIR" && \
+    rm -rf "$FEE_DIR" && \
+    rm -rf "$SITE_DIR" && \
+    rm -rf "$SSL_DIR" && \
+    rm -rf "$NGINX_DIR" && \
     rm -rf "$LETSENCRYPT_DIR"
 }
 
@@ -143,7 +143,7 @@ fee_define()
 {
     mv "$PROIT_TMP_DIR/fee-$FEE_BRANCH" "$FEE_DIR/"
 
-    sudo apt-get install -y libxml2-dev libxslt1-dev python3-pip
+    sudo apt-get install -y libxml2-dev libxslt1-dev python3-pip && \
     pip3 install $(cat $FEE_DIR/requires.txt)
 }
 
