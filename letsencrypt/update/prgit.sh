@@ -12,6 +12,7 @@
     -d fee.prgit.by \
     -d join.prgit.by \
     -d logo.prgit.by \
+    -d primary.prgit.by \
     -d size.fee.prgit.by \
     -d v1.charter.prgit.by \
     -d www.prgit.by \
