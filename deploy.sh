@@ -1,5 +1,7 @@
 #!/bin/sh
 
+DOMAIN_NAMES="${DOMAIN_NAMES:=proit prgit}"
+
 PROIT_USER='proit'
 PROIT_DIR="/home/$PROIT_USER"
 PROIT_TMP_DIR="$PROIT_DIR/tmp"
@@ -24,16 +26,18 @@ LETSENCRYPT_BRANCH='master'
 LETSENCRYPT_URL="https://codeload.github.com/certbot/certbot/tar.gz/$LETSENCRYPT_BRANCH"
 
 SSL_DIR="$PROIT_DIR/ssl"
-SSL_TICKET_KEY_FILE="$SSL_DIR/ticket.key"
+SSL_TICKET_KEY_DIR="$SSL_DIR/ticket"
+SSL_TICKET_KEY_FILE_EXT=".key"
 SSL_TICKET_KEY_BIT_SIZE=80
-SSL_DHPARAM_FILE="$SSL_DIR/dhparam.pem"
+SSL_DHPARAM_DIR="$SSL_DIR/dhparam"
+SSL_DHPARAM_FILE_EXT=".pem"
 SSL_DHPARAM_BIT_SIZE=4096
 
 
 #
 structure_define()
 {
-    echo "Structure building..."
+    echo "Structure building..." && \
 
     mkdir -p "$PROIT_TMP_DIR" && \
     mkdir -p "$SITE_DIR" && \
@@ -60,7 +64,7 @@ deploy_download()
 
     cd "$PROIT_TMP_DIR" && curl -SL "$DEPLOY_URL" | tar -xz
     if [ $? -ne 0 ]; then
-        echo "Some errors with deploy source downloading for '$DEPLOY_URL'"
+        echo "Some errors with deploy source downloading for '$DEPLOY_URL'" && \
         structure_remove
 
         exit 1
@@ -70,13 +74,19 @@ deploy_download()
 # DHParam
 openssl_dhparam_define()
 {
-    openssl dhparam -out "$SSL_DHPARAM_FILE" "$SSL_DHPARAM_BIT_SIZE"
+    mkdir -p "$SSL_DHPARAM_DIR" && \
+    for d in $DOMAIN_NAMES;
+        openssl dhparam -out "$SSL_TICKET_KEY_DIR/$d$SSL_DHPARAM_FILE_EXT" "$SSL_DHPARAM_BIT_SIZE"
+    do
 }
 
 # SSL Ticket key generate
 openssl_ticket_key_define()
 {
-    openssl rand "$SSL_TICKET_KEY_BIT_SIZE" > "$SSL_TICKET_KEY_FILE"
+    mkdir -p "$SSL_TICKET_KEY_DIR" && \
+    for d in $DOMAIN_NAMES;
+        openssl rand "$SSL_TICKET_KEY_BIT_SIZE" > "$SSL_TICKET_KEY_DIR/$d$SSL_TICKET_KEY_FILE_EXT"
+    do
 }
 
 # SSL
@@ -97,7 +107,7 @@ nginx_define()
 #    sudo apt-get update -y && sudo apt-get install -y nginx && sudo apt-get autoclean -y
 
     for f in $(ls "$NGINX_DIR/"); do
-        echo "$f"
+        echo "$f" && \
         sudo ln -sf "$NGINX_DIR/$f" "$NGINX_ETC_DIR/conf.d"
     done
 }
@@ -109,7 +119,7 @@ letsencrypt_define()
 
     cd "$LETSENCRYPT_DIR" && curl -SL "$LETSENCRYPT_URL" | tar -xz
     if [ $? -ne 0 ]; then
-        echo "Some errors with deploy source downloading for '$DEPLOY_URL'"
+        echo "Some errors with deploy source downloading for '$DEPLOY_URL'" && \
         structure_remove
 
         exit 1
@@ -139,7 +149,7 @@ fee_download()
 
     cd "$PROIT_TMP_DIR" && curl -SL "$FEE_URL" | tar -xz
     if [ $? -ne 0 ]; then
-        echo "Some errors with fee source downloading for '$FEE_URL'"
+        echo "Some errors with fee source downloading for '$FEE_URL'" && \
         structure_remove
 
         exit 1
@@ -162,7 +172,7 @@ site_download()
 
     cd "$PROIT_TMP_DIR" && curl -SL "$SITE_URL" | tar -xz
     if [ $? -ne 0 ]; then
-        echo "Some errors with deploy source downloading for '$DEPLOY_URL'"
+        echo "Some errors with deploy source downloading for '$DEPLOY_URL'" && \
         structure_remove
 
         exit 1
