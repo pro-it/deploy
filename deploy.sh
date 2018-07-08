@@ -75,18 +75,18 @@ deploy_download()
 openssl_dhparam_define()
 {
     mkdir -p "$SSL_DHPARAM_DIR" && \
-    for d in $DOMAIN_NAMES;
+    (for d in $DOMAIN_NAMES; do
         openssl dhparam -out "$SSL_TICKET_KEY_DIR/$d$SSL_DHPARAM_FILE_EXT" "$SSL_DHPARAM_BIT_SIZE"
-    do
+    done)
 }
 
 # SSL Ticket key generate
 openssl_ticket_key_define()
 {
     mkdir -p "$SSL_TICKET_KEY_DIR" && \
-    for d in $DOMAIN_NAMES;
+    (for d in $DOMAIN_NAMES; do
         openssl rand "$SSL_TICKET_KEY_BIT_SIZE" > "$SSL_TICKET_KEY_DIR/$d$SSL_TICKET_KEY_FILE_EXT"
-    do
+    done)
 }
 
 # SSL
