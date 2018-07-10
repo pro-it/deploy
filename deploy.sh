@@ -109,7 +109,7 @@ nginx_define()
 #    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABF5BD827BD9BF62 && \
 #    sudo apt-get update -y && sudo apt-get install -y nginx && sudo apt-get autoclean -y
 
-    for f in $(ls "$NGINX_DIR/"); do
+    for f in $(ls "$NGINX_CONFIGS_DIR/"); do
         echo "$f" && \
 
         sudo ln -sf "$NGINX_CONFIGS_DIR/$f" "$NGINX_ETC_DIR/conf.d" && \
