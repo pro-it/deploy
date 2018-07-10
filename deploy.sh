@@ -20,6 +20,8 @@ FEE_URL="https://codeload.github.com/pro-it/fee/tar.gz/$FEE_BRANCH"
 #NGINX_APT_FILE='/etc/apt/sources.list.d/nginx.list'
 NGINX_ETC_DIR='/etc/nginx'
 NGINX_DIR="$PROIT_DIR/nginx"
+NGINX_LOGS_DIR="$NGINX_DIR/logs"
+NGINX_CONFIGS_DIR="$NGINX_DIR/configs"
 
 LETSENCRYPT_DIR="$PROIT_DIR/letsencrypt"
 LETSENCRYPT_BRANCH='master'
@@ -99,6 +101,7 @@ ssl_define()
 #
 nginx_define()
 {
+    local b_name=''
 #    sudo rm -f "$NGINX_APT_FILE" && \
 #    sudo touch "$NGINX_APT_FILE" && \
 #    sudo echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" >> "$NGINX_APT_FILE" && \
@@ -108,7 +111,14 @@ nginx_define()
 
     for f in $(ls "$NGINX_DIR/"); do
         echo "$f" && \
-        sudo ln -sf "$NGINX_DIR/$f" "$NGINX_ETC_DIR/conf.d"
+
+        sudo ln -sf "$NGINX_CONFIGS_DIR/$f" "$NGINX_ETC_DIR/conf.d" && \
+
+        b_name="$(basename "$f" .conf)"
+
+        if [ "$b_name" != "$f" ]; then
+            mkdir -p "$NGINX_LOGS_DIR/$b_name"
+        fi
     done
 }
 
