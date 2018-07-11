@@ -1,8 +1,8 @@
 #!/bin/sh
 
-PROIT_CURRENT_DIR="$(cd "$(dirname "$0")" && pwd -P)"
-PROIT_UPDATE_DIR="$PROIT_CURRENT_DIR/update/"
+PRGIT_CURRENT_DIR="$(cd "$(dirname "$0")" && pwd -P)"
+PRGIT_UPDATE_DIR="$PRGIT_CURRENT_DIR/update/"
 
-for f in $(ls "$PROIT_UPDATE_DIR"); do
-    "$PROIT_UPDATE_DIR$f"
+for f in $(ls "$PRGIT_UPDATE_DIR"); do
+    "$PRGIT_UPDATE_DIR$f"
 done
