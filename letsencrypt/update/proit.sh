@@ -2,7 +2,7 @@
 
 /home/proit/letsencrypt/certbot/certbot-auto certonly \
     --standalone \
-    --email info@hackerspace.by \
+    --email info@xn--h1alcem.xn--90ais \
     --renew-by-default \
     --rsa-key-size 4096 \
     -d xn--h1alcem.xn--90ais \

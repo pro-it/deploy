@@ -2,7 +2,7 @@
 
 /home/proit/letsencrypt/certbot/certbot-auto certonly \
     --standalone \
-    --email info@hackerspace.by \
+    --email info@prgit.by \
     --renew-by-default \
     --rsa-key-size 4096 \
     -d prgit.by \
