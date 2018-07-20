@@ -78,7 +78,7 @@ openssl_dhparam_define()
 {
     mkdir -p "$SSL_DHPARAM_DIR" && \
     (for d in $DOMAIN_NAMES; do
-        openssl dhparam -out "$SSL_TICKET_KEY_DIR/$d$SSL_DHPARAM_FILE_EXT" "$SSL_DHPARAM_BIT_SIZE"
+        openssl dhparam -out "$SSL_DHPARAM_DIR/$d$SSL_DHPARAM_FILE_EXT" "$SSL_DHPARAM_BIT_SIZE"
     done)
 }
 
