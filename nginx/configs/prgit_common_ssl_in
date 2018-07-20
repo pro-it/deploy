@@ -2,7 +2,7 @@ ssl_certificate /etc/letsencrypt/live/prgit.by/fullchain.pem;
 ssl_certificate_key /etc/letsencrypt/live/prgit.by/privkey.pem;
 ssl_trusted_certificate /etc/letsencrypt/live/prgit.by/cert.pem;
 
-include conf.d/prgit_common_ssl.conf_;
+include conf.d/prgit_common_ssl;
 
 ssl_session_ticket_key /home/proit/ssl/ticket/prgit.key;
 ssl_dhparam /home/proit/ssl/dhparam/prgit.pem;
