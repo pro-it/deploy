@@ -10,6 +10,7 @@
     -d chat.prgit.by \
     -d docs.prgit.by \
     -d fee.prgit.by \
+    -d info.prgit.by \
     -d join.prgit.by \
     -d logo.prgit.by \
     -d primary.prgit.by \
