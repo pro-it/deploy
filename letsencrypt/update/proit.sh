@@ -1,6 +1,6 @@
 #!/bin/sh
 
-/home/proit/letsencrypt/certbot/certbot-auto certonly \
+/usr/bin/certbot certonly \
     --standalone \
     --email info@xn--h1alcem.xn--90ais \
     --renew-by-default \

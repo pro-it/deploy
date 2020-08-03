@@ -1,6 +1,6 @@
 #!/bin/sh
 
-/home/proit/letsencrypt/certbot/certbot-auto certonly \
+/usr/bin/certbot certonly \
     --standalone \
     --email info@prgit.by \
     --renew-by-default \
