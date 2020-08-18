@@ -15,6 +15,7 @@
     -d xn--c1apjb.xn--h1alcem.xn--90ais \
     -d xn--n1aba.xn--h1alcem.xn--90ais \
     -d xn--80akfure.xn--b1aksep.xn--h1alcem.xn--90ais \
+    -в xn--c1ax.xn--h1alcem.xn--90ais \
     -d xn--c1ad6a.xn--h1alcem.xn--90ais \
     -d xn--80ae7bed.xn--h1alcem.xn--90ais \
     -d xn--80a0bn.xn--h1alcem.xn--90ais \
