@@ -13,7 +13,7 @@
     -d info.prgit.by \
     -d join.prgit.by \
     -d logo.prgit.by \
-    -d ppo.prgit.by \
+    -d ptuo.prgit.by \
     -d tug.prgit.by \
     -d size.fee.prgit.by \
     -d v1.charter.prgit.by \
