@@ -7,7 +7,6 @@
     --rsa-key-size 4096 \
     -d xn--h1alcem.xn--90ais \
     -d www.xn--h1alcem.xn--90ais \
-    -d xn--90a2addb.xn--h1alcem.xn--90ais \
     -d xn--1-ctb.xn--80ae7bed.xn--h1alcem.xn--90ais \
     -d xn--b1aksep.xn--h1alcem.xn--90ais \
     -d xn--h1akdx.xn--h1alcem.xn--90ais \
