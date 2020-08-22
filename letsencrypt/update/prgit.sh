@@ -11,7 +11,7 @@
     -d docs.prgit.by \
     -d fee.prgit.by \
     -d info.prgit.by \
-    -d join.prgit.by \
+    -d member.prgit.by \
     -d logo.prgit.by \
     -d ptuo.prgit.by \
     -d tug.prgit.by \
