@@ -1,6 +1,6 @@
-ssl_certificate /etc/letsencrypt/live/xn--h1alcem.xn--90ais/fullchain.pem;
-ssl_certificate_key /etc/letsencrypt/live/xn--h1alcem.xn--90ais/privkey.pem;
-ssl_trusted_certificate /etc/letsencrypt/live/xn--h1alcem.xn--90ais/cert.pem;
+ssl_certificate /etc/letsencrypt/live/xn--d1acvi.xn--h1alcem.xn--90ais/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/xn--d1acvi.xn--h1alcem.xn--90ais/privkey.pem;
+ssl_trusted_certificate /etc/letsencrypt/live/xn--d1acvi.xn--h1alcem.xn--90ais/cert.pem;
 
 include conf.d/proit_common_ssl;
 

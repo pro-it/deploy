@@ -1,6 +1,6 @@
-ssl_certificate /etc/letsencrypt/live/prgit.by/fullchain.pem;
-ssl_certificate_key /etc/letsencrypt/live/prgit.by/privkey.pem;
-ssl_trusted_certificate /etc/letsencrypt/live/prgit.by/cert.pem;
+ssl_certificate /etc/letsencrypt/live/demo.prgit.by/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/demo.prgit.by/privkey.pem;
+ssl_trusted_certificate /etc/letsencrypt/live/demo.prgit.by/cert.pem;
 
 include conf.d/prgit_common_ssl;
 

@@ -10,7 +10,7 @@ SITE_BRANCH='master'
 SITE_DIR="$PRGIT_DIR/site"
 SITE_URL="https://codeload.github.com/pro-it/site/tar.gz/$SITE_BRANCH"
 
-DEPLOY_BRANCH='master'
+DEPLOY_BRANCH='demo'
 DEPLOY_URL="https://codeload.github.com/pro-it/deploy/tar.gz/$DEPLOY_BRANCH"
 
 FEE_DIR="$PRGIT_DIR/fee"
@@ -94,8 +94,9 @@ openssl_ticket_key_define()
 # SSL
 ssl_define()
 {
-    openssl_ticket_key_define && \
-    openssl_dhparam_define
+    openssl_ticket_key_define
+# && \
+#    openssl_dhparam_define
 }
 
 #
